@@ -1,0 +1,24 @@
+version: '3'
+services:
+  authelia:
+    image: authelia/authelia:latest
+    container_name: authelia
+    volumes:
+      - ./config:/config
+    ports:
+      - "9091:9091"
+      - "9093:9093"
+    environment:
+      - TZ=Europe/Madrid
+    labels:
+      - "traefik.http.routers.authelia.entrypoints=websecure"
+      - "traefik.http.routers.authelia.tls=true"
+      - "traefik.http.routers.authelia.rule=Host(`sso.akiohome.com`)"
+      - "traefik.http.services.authelia-service.loadbalancer.server.port=9091"
+    networks:
+      - home
+    restart: unless-stopped
+networks:
+   home:
+    name: home
+    external: true
