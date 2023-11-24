@@ -1,0 +1,40 @@
+version: "2"
+services:
+  bookstack:
+    image: lscr.io/linuxserver/bookstack
+    container_name: bookstack
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - APP_URL=https://docs.akiohome.com
+      - DB_HOST=bookstack_db
+      - DB_USER=bookstack
+      - DB_PASS=##### #Change Password
+      - DB_DATABASE=bookstackapp
+    volumes:
+      - ./config:/config
+    networks:
+      - home
+    ports:
+      - 6875:80
+    restart: unless-stopped
+    depends_on:
+      - bookstack_db
+  bookstack_db:
+    image: lscr.io/linuxserver/mariadb
+    container_name: bookstack_db
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MYSQL_ROOT_PASSWORD=##### #Change Password
+      - TZ=Europe/Madrid
+      - MYSQL_DATABASE=bookstackapp
+      - MYSQL_USER=bookstack
+      - MYSQL_PASSWORD=##### #Change Password
+    volumes:
+      - ./config-db:/config
+    restart: unless-stopped
+networks:
+   home:
+    name: home
+    external: true
