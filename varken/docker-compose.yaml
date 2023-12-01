@@ -4,6 +4,7 @@ services:
     hostname: influxdb
     container_name: influxdb
     image: influxdb:1.8
+    env_file: .env
     networks:
       - grafana-net
     volumes:
