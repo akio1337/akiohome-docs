@@ -1,0 +1,12 @@
+version: '3'
+services:
+  mkdocs:
+    image: squidfunk/mkdocs-material
+    container_name: mkdocs
+    command: serve --dev-addr=0.0.0.0:8000
+    volumes:
+      - ./docs:/docs
+    ports:
+      - 8300:8000
+    restart: unless-stopped
+    

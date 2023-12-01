@@ -1,0 +1,27 @@
+version: "2.1"
+services:
+  overseerr:
+    image: lscr.io/linuxserver/overseerr:latest
+    container_name: overseerr
+    environment:
+      - PUID=1026
+      - PGID=100
+      - TZ=Europe/Madrid
+    volumes:
+      - ./config:/config
+    networks:
+      - home
+    labels:
+      - flame.type=application
+      - flame.name=Overseerr
+      - flame.url=https://peticiones.akiohome.com
+      - flame.icon=plus-box
+      - "traefik.http.routers.overseerr.entrypoints=websecure"
+      - "traefik.http.routers.overseerr.tls=true"
+      - "traefik.http.routers.overseerr.rule=Host(`peticiones.akiohome.com`)"
+      - "traefik.http.services.overseerr-service.loadbalancer.server.port=5055"
+    restart: unless-stopped 
+networks:
+  home:
+    name: home
+    external: true

@@ -1,0 +1,24 @@
+version: "3.2"
+services:
+   plex:
+    image: linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    devices:
+      - /dev/dri:/dev/dri
+    env_file: .env
+    volumes:
+      - /tmp/plex/transcode:/transcode
+      - plex-config:/config
+      - /mnt/usb/mediausb:/media/usb/mediausb
+      - /mnt/hdd/backup/plex:/config/backup
+      - /mnt/syno/:/mnt/syno/
+    labels:
+      - flame.type=application
+      - flame.name=Plex
+      - flame.url=https://plex.tv
+      - flame.icon=play-box
+      - traefik.enable=false
+    restart: unless-stopped
+volumes:
+ plex-config:
