@@ -1,0 +1,27 @@
+version: "3"
+services:
+  flatnotes:
+    container_name: flatnotes
+    image: dullage/flatnotes:latest
+    environment:
+      PUID: 1026
+      PGID: 100
+      FLATNOTES_AUTH_TYPE: none
+      FLATNOTES_PATH: "/data/notas"
+    volumes:
+      - "./data:/data"
+      - "/mnt/hdd/notas:/data/notas"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.flatnotes.entrypoints=websecure"
+      - "traefik.http.routers.flatnotes.tls=true"
+      - "traefik.http.routers.flatnotes.rule=Host(`notas.akiohome.com`)"
+      - "traefik.http.services.flatnotes-service.loadbalancer.server.port=8080"
+      - 'traefik.http.routers.flatnotes.middlewares=authelia@docker'
+    networks:
+     - home
+    restart: unless-stopped
+networks:
+  home:
+   name: home
+   external: true
