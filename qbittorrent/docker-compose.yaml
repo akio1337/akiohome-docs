@@ -1,0 +1,27 @@
+version: "2.1"
+services:
+  qbittorrent:
+    image: linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    volumes:
+      - ./config:/config
+      - /mnt/usb/descargas:/mnt/usb/descargas
+      - /mnt/syno/descargas:/mnt/syno/descargas
+      - /mnt/syno/Switch:/mnt/syno/Switch
+    env_file: .env
+    ports:
+      - 6881:6881
+      - 6881:6881/udp
+      - 8080:8080
+    networks:
+      - arr
+    labels:
+      - flame.type=application
+      - flame.name=qBittorrent
+      - flame.url=http://akiohome:8080
+      - flame.icon=download-box
+    restart: unless-stopped
+networks:
+  arr:
+    external: true
+    name: arr

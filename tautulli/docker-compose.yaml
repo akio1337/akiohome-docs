@@ -1,0 +1,21 @@
+version: "2.1"
+services:
+  tautulli:
+    image: lscr.io/linuxserver/tautulli:latest
+    container_name: tautulli
+    environment:
+      - PUID=1026
+      - PGID=100
+      - TZ=Europe/Madrid
+    volumes:
+      - ./config:/config
+      - ./scripts:/scripts # Instalar el script Trakt-Syncer: https://github.com/brandonguigo/trakt-syncer 
+      - /mnt/hdd/backup/tautulli:/config/backups
+    ports:
+      - 8181:8181
+    labels:
+      - flame.type=application
+      - flame.name=Tautulli
+      - flame.url=http://akiohome:8181
+      - flame.icon=chart-box
+    restart: unless-stopped

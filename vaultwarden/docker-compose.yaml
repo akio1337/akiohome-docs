@@ -1,0 +1,22 @@
+version: "2.1"
+services:
+  qbittorrent:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    env_file: .env
+    volumes:
+      - ./data:/data
+    ports:
+      - 6666:80
+    networks:
+      - home
+    labels:
+      - "traefik.http.routers.vaultwarden.entrypoints=websecure"
+      - "traefik.http.routers.vaultwarden.tls=true"
+      - "traefik.http.routers.vaultwarden.rule=Host(`vault.akiohome.com`)"
+      - "traefik.http.services.vaultwarden-service.loadbalancer.server.port=80"
+    restart: unless-stopped
+networks:
+  home:
+    name: home
+    external: true 

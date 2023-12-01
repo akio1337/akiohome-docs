@@ -1,0 +1,26 @@
+version: "2.1"
+services:
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:develop
+    container_name: prowlarr
+    environment:
+      - PUID=1026
+      - PGID=100
+      - TZ=Europe/Madrid
+    volumes:
+      - ./config:/config
+      - /mnt/hdd/backup/prowlarr:/config/backup
+    ports:
+      - 9696:9696
+    networks:
+      - arr
+    labels:
+      - flame.type=application
+      - flame.name=Prowlarr
+      - flame.url=http://akiohome:9696
+      - flame.icon=alpha-p-box
+    restart: unless-stopped
+networks:
+  arr:
+    name: arr
+    external: true

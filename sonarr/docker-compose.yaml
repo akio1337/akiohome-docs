@@ -1,0 +1,28 @@
+version: "2.1"
+services:
+  sonarr:
+   image: lscr.io/linuxserver/sonarr:develop
+   container_name: sonarr
+   environment:
+    - PUID=1026
+    - PGID=100
+    - TZ=Europe/Madrid
+   volumes:
+    - ./config:/config
+    - /mnt/usb/:/mnt/usb/
+    - /mnt/syno/:/mnt/syno/
+    - /mnt/hdd/backup/sonarr:/config/backup
+   ports:
+    - 8989:8989
+   networks:
+    - arr
+   labels:
+    - flame.type=application
+    - flame.name=Sonarr
+    - flame.url=http://akiohome:8989
+    - flame.icon=television-box
+   restart: unless-stopped
+networks:
+  arr:
+    external: true
+    name: arr
