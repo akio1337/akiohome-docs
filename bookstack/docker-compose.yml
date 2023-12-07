@@ -11,6 +11,11 @@ services:
       - db
     ports:
       - 6875:80
+    labels:
+      - flame.type=application
+      - flame.name=Bookstack
+      - flame.url=http://akiohome:6875
+      - flame.icon=notebook  
     restart: unless-stopped
     depends_on:
       - mariadb
