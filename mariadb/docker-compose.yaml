@@ -1,0 +1,15 @@
+version: '3'
+services:
+  mariadb:
+    image: lscr.io/linuxserver/mariadb
+    container_name: mariadb
+    env_file: .db.env
+    volumes:
+      - ./config-db:/config
+    restart: unless-stopped
+    networks:
+      - db
+networks:
+   db:
+    name: db
+    external: true
