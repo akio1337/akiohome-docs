@@ -1,0 +1,21 @@
+version: "2.4"
+
+services:
+  viseron:
+    image: roflcoopter/viseron:latest
+    container_name: viseron
+    volumes:
+      - /mnt/hdd/viseron/recordings:/recordings
+      - ./config:/config
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 8888:8888
+    devices:
+      - /dev/dri
+    labels:
+      - flame.type=application
+      - flame.name=Viseron
+      - flame.url=http://akiohome:8888
+      - flame.icon=cctv
+    privileged: true
+    restart: unless-stopped
