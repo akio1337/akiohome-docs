@@ -7,22 +7,16 @@ services:
     volumes:
       - ./config:/config
     networks:
-      - home
       - db
     ports:
       - 6875:80
+    restart: unless-stopped
     labels:
       - flame.type=application
       - flame.name=Bookstack
       - flame.url=http://akiohome:6875
-      - flame.icon=notebook  
-    restart: unless-stopped
-    depends_on:
-      - mariadb
+      - flame.icon=notebook
 networks:
-   home:
-    name: home
-    external: true
    db:
     name: db
     external: true
