@@ -1,0 +1,11 @@
+{$DOMAIN}:443 {
+
+  tls /certs/cert.pem /certs/key.pem
+
+  encode gzip
+
+  reverse_proxy /notifications/hub vaultwarden:3012
+
+  reverse_proxy vaultwarden:3012
+
+}
