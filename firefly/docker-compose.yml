@@ -6,66 +6,44 @@ services:
     container_name: firefly_iii_core
     restart: always
     volumes:
-      - firefly_iii_upload:/var/www/html/storage/upload
-    env_file: .env
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.firefly_iii_core.entrypoints=websecure
-      - traefik.http.routers.firefly_iii_core.rule=Host(`gastos.akiohome.com`)
-      - traefik.http.routers.firefly_iii_core.tls=true
-      - traefik.http.services.firefly_iii_core.loadbalancer.server.port=8080
-      - traefik.docker.network=home
+      - ./upload:/var/www/html/storage/upload
+    env_file:
+      - .env
     networks:
       - firefly_iii
-      - home
-    depends_on:
       - db
-  db:
-    image: mariadb
-    hostname: db
-    container_name: firefly_iii_db
-    restart: always
-    env_file: .db.env
-    networks:
-      - firefly_iii
-    volumes:
-      - firefly_iii_db:/var/lib/mysql
+    ports:
+      - 5050:8080
+    labels:
+      - flame.type=application
+      - flame.name=Firefly
+      - flame.url=http://akiohome:5050
+      - flame.icon=piggy-bank
   cron:
     image: alpine
     restart: always
     container_name: firefly_iii_cron
-    command: sh -c "echo \"0 3 * * * wget -qO- http://app:8080/api/v1/cron/agwWydaUGLQ5KAHEUlrbHiXTqrDLLhL7\" | crontab - && crond -f -L /dev/stdout"
-    networks:
-      - firefly_iii
-    labels:
-      - traefik.enable=false
+    command: sh -c "echo \"0 3 * * * wget -qO- http://192.168.0.24:5050/api/v1/cron/1d1b626358a6ff53e308010ce884e35c\" | crontab - && crond -f -L /dev/stdout"
 
   importer:
     image: fireflyiii/data-importer:latest
     hostname: importer
     container_name: firefly_iii_importer
-    networks:
-      - firefly_iii
-      - home
     restart: always
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.firefly_iii_importer.entrypoints=websecure
-      - traefik.http.routers.firefly_iii_importer.rule=Host(`gastos-importer.akiohome.com`)
-      - traefik.http.routers.firefly_iii_importer.tls=true
-      - traefik.http.services.firefly_iii_importer.loadbalancer.server.port=8080
-      - traefik.docker.network=home
     depends_on:
       - app
     env_file: .importer.env
-
-volumes:
-   firefly_iii_upload:
-   firefly_iii_db:
-
+    ports:
+      - 5051:8080
+    networks:
+      - firefly_iii
+    labels:
+      - flame.type=application
+      - flame.name=Firefly-Importer
+      - flame.url=http://akiohome:5051
+      - flame.icon=database-import
 networks:
-  firefly_iii:
-    driver: bridge
-  home:
-    name: home
+   db:
+    name: db
     external: true
+   firefly_iii:
