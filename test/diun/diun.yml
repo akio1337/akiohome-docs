@@ -16,7 +16,7 @@ providers:
 
 notif:
   telegram:
-    token: 5896131566:AAELvVjeRshGJdGDybstLoWNIMsmF_pb4jY
+    token: CHANGEME
     chatIDs:
       - -1001714181769
     templateBody: |
