@@ -1,0 +1,39 @@
+cache:
+  path: $PTS_CACHE_DIR/trakt_cache
+config:
+  dotenv_override: true
+plex:
+  timeout: 30
+logging:
+  append: true
+  console_time: false
+  debug: false
+  filename: plextraktsync.log
+  filter_loggers:
+  filter:
+sync:
+  rating_priority: plex
+
+  plex_to_trakt:
+    collection: true
+    clear_collected: true
+    ratings: true
+    watched_status: false
+    watchlist: false
+  trakt_to_plex:
+    liked_lists: true
+    ratings: true
+    watched_status: true
+    watchlist: false
+    watchlist_as_playlist: false
+
+watch:
+  add_collection: false
+  remove_collection: false
+  scrobble_threshold: 80
+  username_filter: true
+  media_progressbar: true
+
+xbmc-providers:
+  movies: tmdb
+  shows: tmdb

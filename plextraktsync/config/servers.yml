@@ -1,0 +1,7 @@
+servers:
+  default:
+    token: CHANGEME
+    urls:
+    - http://192.168.0.24:32400
+    id: null
+    config: null
