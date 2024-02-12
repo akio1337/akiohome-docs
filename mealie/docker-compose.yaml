@@ -1,28 +1,11 @@
 version: "3.7"
 services:
   mealie:
-    image: ghcr.io/mealie-recipes/mealie:v1.0.0-RC1.1
+    image: ghcr.io/mealie-recipes/mealie:v1.0.0-RC2
     container_name: mealie
     ports:
         - "9925:9000"
-    # deploy:
-    #   resources:
-    #     limits:
-    #       memory: 1000M
     volumes:
       - ./app/data:/app/data/
-    networks:
-      - home
     env_file: .env
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.mealie.entrypoints=websecure"
-      - "traefik.http.routers.mealie.tls=true"
-      - "traefik.http.routers.mealie.rule=Host(`recetas.akiohome.com`)"
-      - "traefik.http.services.mealie-service.loadbalancer.server.port=9000"
-    #  - 'traefik.http.routers.mealie.middlewares=authelia@docker'
     restart: always
-networks:
-  home:
-   name: home
-   external: true
