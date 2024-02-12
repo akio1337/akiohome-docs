@@ -4,8 +4,8 @@ services:
     image: linuxserver/plex:latest
     container_name: plex
     network_mode: host
-    devices:
-      - /dev/dri:/dev/dri
+    #devices:
+    #  - /dev/dri:/dev/dri
     env_file: .env
     volumes:
       - /tmp/plex/transcode:/transcode
