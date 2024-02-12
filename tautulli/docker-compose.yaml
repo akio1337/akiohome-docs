@@ -9,8 +9,7 @@ services:
       - TZ=Europe/Madrid
     volumes:
       - ./config:/config
-      - ./scripts:/scripts # Instalar el script Trakt-Syncer: https://github.com/brandonguigo/trakt-syncer 
-      - /mnt/hdd/backup/tautulli:/config/backups
+      - /mnt/hdd/backup/tautulli:/config/backups # La carpeta en el contenedor es backups ya que Tautulli no permite modificarlo
     ports:
       - 8181:8181
     labels:
