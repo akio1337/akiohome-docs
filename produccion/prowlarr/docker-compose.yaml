@@ -2,7 +2,7 @@ version: "2.1"
 services:
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:develop
-    container_name: prowlarr2
+    container_name: prowlarr
     environment:
       - PUID=1026
       - PGID=100
