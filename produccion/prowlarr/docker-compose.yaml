@@ -8,7 +8,7 @@ services:
       - PGID=100
       - TZ=Europe/Madrid
     volumes:
-      - ./config:/config
+      - /home/akio1337/prowlarr/config:/config
       - /mnt/hdd/backup/prowlarr:/config/backup
     ports:
       - 9696:9696
