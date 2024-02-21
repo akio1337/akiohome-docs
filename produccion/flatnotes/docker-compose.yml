@@ -16,7 +16,6 @@ services:
       - "/mnt/hdd/notas/:/data"
       # Optional. Allows you to save the search index in a different location:
       # - "./index:/data/.flatnotes"
-      - ./config:/config
     ports:
       - "5555:8080"
     restart: unless-stopped
