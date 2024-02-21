@@ -1,7 +1,7 @@
 version: "3"
 services:
   flatnotes:
-    container_name: flatnotes2
+    container_name: flatnotes
     image: dullage/flatnotes:latest
     environment:
       PUID: 1026
@@ -16,6 +16,7 @@ services:
       - "/mnt/hdd/notas/:/data"
       # Optional. Allows you to save the search index in a different location:
       # - "./index:/data/.flatnotes"
+      - ./config:/config
     ports:
       - "5555:8080"
     restart: unless-stopped
