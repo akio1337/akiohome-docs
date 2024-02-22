@@ -1,6 +1,6 @@
 servers:
   default:
-    token: RaAaNnKVUyN8vdXmsSDs
+    token: BBEKwe5NCbNFfUypLeyu
     urls:
     - http://192.168.0.24:32400
     id: null
