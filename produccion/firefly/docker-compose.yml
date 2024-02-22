@@ -17,6 +17,7 @@ services:
       - flame.name=Firefly
       - flame.url=http://akiohome:5050
       - flame.icon=piggy-bank
+    env_file: .env
   cron:
     image: alpine
     restart: always
@@ -28,6 +29,7 @@ services:
     hostname: importer
     container_name: firefly_iii_importer
     restart: always
+    env_file: .importer.env
     depends_on:
       - app
     ports:
