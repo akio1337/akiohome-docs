@@ -16,11 +16,11 @@ services:
     container_name: plextraktsync
     command: sync
     volumes:
-      - ./config:/app/config
+      - /home/akio1337/plextrakysync/config:/app/config
   plextraktwatch:
     image: ghcr.io/taxel/plextraktsync:0.28.17
     container_name: plextraktwatch
     command: watch
     volumes:
-      - ./config:/app/config
+      - /home/akio1337/plextrakysync/config:/app/config
     restart: unless-stopped
