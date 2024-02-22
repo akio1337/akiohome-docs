@@ -8,7 +8,7 @@ services:
       - PGID=100
       - TZ=Europe/Madrid
     volumes:
-      - ./config:/config
+      - /home/akio1337/radarr/config:/config
       - /mnt/usb/:/mnt/usb/
       - /mnt/hdd/backup/radarr:/config/backup
     ports:
