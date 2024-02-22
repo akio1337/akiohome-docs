@@ -3,5 +3,4 @@ services:
   playlistSync:
     image: rnagabhyrava/plexplaylistsync:latest
     container_name: playlistSync
-    env_file: .env
     restart: unless-stopped
