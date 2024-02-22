@@ -6,9 +6,9 @@ services:
     container_name: firefly_iii_core
     restart: always
     volumes:
-      - ./upload:/var/www/html/storage/upload
+      - /home/akio1337/firefly/upload:/var/www/html/storage/upload
     env_file:
-      - .env
+      - /home/akio1337/firefly/.env
     networks:
       - firefly_iii
       - db
@@ -32,7 +32,7 @@ services:
     restart: always
     depends_on:
       - app
-    env_file: .importer.env
+    env_file: /home/akio1337/firefly/.importer.env
     ports:
       - 5051:8080
     networks:
