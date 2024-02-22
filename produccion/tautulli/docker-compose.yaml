@@ -1,3 +1,4 @@
+---
 version: "2.1"
 services:
   tautulli:
@@ -8,8 +9,9 @@ services:
       - PGID=100
       - TZ=Europe/Madrid
     volumes:
-      - ./config:/config
-      - /mnt/hdd/backup/tautulli:/config/backups # La carpeta en el contenedor es backups ya que Tautulli no permite modificarlo
+      - /home/akio1337/tautulli/config:/config
+      - plex-config:/plex-config
+      - /mnt/hdd/backup/tautulli:/config/backups ## La carpeta en el contenedor es backups ya que Tautulli no permite modificarlo
     ports:
       - 8181:8181
     labels:
@@ -18,3 +20,7 @@ services:
       - flame.url=http://akiohome:8181
       - flame.icon=chart-box
     restart: unless-stopped
+volumes:
+  plex-config:
+    name: plex_plex-config
+    external: true
