@@ -13,27 +13,17 @@ theme:
     - content.code.copy
   language: es
   palette:
-    - scheme: default
-      toggle:
-        icon: material/toggle-switch-off-outline 
-        name: Switch to dark mode
-      primary: teal
-      accent: purple 
-    - scheme: slate 
-      toggle:
-        icon: material/toggle-switch
-        name: Switch to light mode    
-      primary: teal
-      accent: lime
-
+    - scheme: slate
+      primary: deep orange
+      accent: deep orange
+repo_url: https://github.com/akio1337/akiohome
+repo_name: akio1337/akiohome
 extra:
   social:
-    - icon: fontawesome/brands/github-alt
-      link: https://github.com/james-willett
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/TheJamesWillett
-    - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/willettjames/
+    - icon: fontawesome/brands/twitch
+      link: https://twitch.tv/akio1337
+    - icon: fontawesome/brands/github
+      link: https://github.com/akio1337
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -50,4 +40,4 @@ markdown_extensions:
   - attr_list
 
 copyright: |
-  &copy; 2023 <a href="https://github.com/james-willett"  target="_blank" rel="noopener">James Willett</a>
+  &copy; 2024 <a href="https://github.com/akio1337"  target="_blank" rel="noopener">Akio</a>
