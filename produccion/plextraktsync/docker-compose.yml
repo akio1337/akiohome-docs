@@ -2,6 +2,7 @@ version: '2'
 services:
   scheduler:
     image: mcuadros/ofelia:latest
+    network_mode: host
     container_name: scheduler
     depends_on:
       - plextraktsync
@@ -14,12 +15,14 @@ services:
   plextraktsync:
     image: ghcr.io/taxel/plextraktsync:0.28.17
     container_name: plextraktsync
+    network_mode: host
     command: sync
     volumes:
       - /home/akio1337/plextrakysync/config:/app/config
   plextraktwatch:
     image: ghcr.io/taxel/plextraktsync:0.28.17
     container_name: plextraktwatch
+    network_mode: host
     command: watch
     volumes:
       - /home/akio1337/plextrakysync/config:/app/config
