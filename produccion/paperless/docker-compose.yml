@@ -11,8 +11,6 @@ services:
     restart: unless-stopped
     volumes:
       - pgdata:/var/lib/postgresql/data
-    env_file:
-     - stack.env
 
   webserver:
     image: ghcr.io/paperless-ngx/paperless-ngx:latest
@@ -31,8 +29,7 @@ services:
       - flame.name=Paperless
       - flame.url=http://akiohome:8000
       - flame.icon=printer-off
-    env_file:
-     - stack.env
+
 volumes:
   data:
   pgdata:
