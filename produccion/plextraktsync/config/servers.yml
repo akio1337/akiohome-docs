@@ -1,6 +1,6 @@
 servers:
   default:
-    token: CHANGEME
+    token: RaAaNnKVUyN8vdXmsSDs
     urls:
     - http://192.168.0.24:32400
     id: null
