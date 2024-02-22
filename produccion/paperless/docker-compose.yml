@@ -23,7 +23,7 @@ services:
       - db
       - broker
     ports:
-      - "8000:8000"
+      - "8300:8000"
     volumes:
       - /home/akio133/paperless/data:/usr/src/paperless/data
       - /home/akio133/paperless/media:/usr/src/paperless/media
