@@ -10,6 +10,7 @@ services:
     networks:
       - firefly_iii
       - db
+    env_file: .env
     ports:
       - 5050:8080
     labels:
@@ -32,6 +33,7 @@ services:
       - app
     ports:
       - 5051:8080
+    env_file: .importer.env
     networks:
       - firefly_iii
     labels:
