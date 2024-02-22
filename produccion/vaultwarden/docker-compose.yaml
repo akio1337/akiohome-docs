@@ -3,15 +3,8 @@ services:
   vaultwarden:
     image: vaultwarden/server:latest
     container_name: vaultwarden
-    environment:
-      - ROCKET_PROFILE=release
-      - ROCKET_ADDRESS=0.0.0.0
-      - ROCKET_PORT=3012
-      - DOMAIN=http://akiohome:3012
     volumes:
       - vw-data:/data
-    ports:
-      - 3012:3012
     restart: unless-stopped
   caddy:
     image: caddy:2
@@ -20,10 +13,10 @@ services:
     ports:
       - 443:443
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - ./caddy-config:/config
-      - ./certs:/certs
-      - ./caddy-data:/data
+      - /home/akio1337/vaultwarden/Caddyfile:/etc/caddy/Caddyfile:ro
+      - /home/akio1337/vaultwarden/caddy-config:/config
+      - /home/akio1337/vaultwarden/certs:/certs
+      - /home/akio1337/vaultwarden/caddy-data:/data
     environment:
       - DOMAIN=https://akiohome.tail21cc7.ts.net
 volumes:
