@@ -1,0 +1,40 @@
+version: "3.4"
+services:
+  broker:
+    image: docker.io/library/redis:7
+    restart: unless-stopped
+    volumes:
+      - redisdata:/data
+
+  db:
+    image: docker.io/library/postgres:15
+    restart: unless-stopped
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    env_file:
+     - stack.env
+
+  webserver:
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    restart: unless-stopped
+    depends_on:
+      - db
+      - broker
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/usr/src/paperless/data
+      - ./media:/usr/src/paperless/media
+      - ./export:/usr/src/paperless/export
+      - /home/akio1337/paperless-ngx/paperless-ngx/consume:/usr/src/paperless/consume
+    labels:
+      - flame.type=application
+      - flame.name=Paperless
+      - flame.url=http://akiohome:8000
+      - flame.icon=printer-off
+    env_file:
+     - stack.env
+volumes:
+  data:
+  pgdata:
+  redisdata:
