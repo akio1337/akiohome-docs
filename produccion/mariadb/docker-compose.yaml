@@ -5,7 +5,7 @@ services:
     hostname: mariadb
     container_name: mariadb
     volumes:
-      - ./config-db:/config
+      - /home/akio1337/mariadb/config-db:/config
     networks:
       - db
     restart: unless-stopped
