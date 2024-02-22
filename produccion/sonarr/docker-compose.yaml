@@ -8,7 +8,7 @@ services:
     - PGID=100
     - TZ=Europe/Madrid
    volumes:
-    - ./config:/config
+    - /home/akio1337/sonarr/config:/config
     - /mnt/usb/:/mnt/usb/
     - /mnt/syno/:/mnt/syno/
     - /mnt/hdd/backup/sonarr:/config/backup
