@@ -2,7 +2,6 @@ version: "3.4"
 services:
   broker:
     image: docker.io/library/redis:7
-    network_mode: host
     restart: unless-stopped
     volumes:
       - redisdata:/data
@@ -11,7 +10,6 @@ services:
   db:
     image: docker.io/library/postgres:15
     restart: unless-stopped
-    network_mode: host
     volumes:
       - pgdata:/var/lib/postgresql/data
 
@@ -21,7 +19,6 @@ services:
     depends_on:
       - db
       - broker
-    network_mode: host
     ports:
       - "8300:8000"
     volumes:
