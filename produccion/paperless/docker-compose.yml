@@ -21,6 +21,7 @@ services:
     depends_on:
       - db
       - broker
+    network_mode: host
     ports:
       - "8300:8000"
     volumes:
