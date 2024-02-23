@@ -2,4 +2,37 @@
 ## Lista de servicios en producción
 - Sonarr
 - Radarr
-## Lista de servicios en test
+- Lidarr
+- Prowlarr
+- qBittorrent
+- Tautulli
+- Paperless-ngx
+- Portainer
+- Vaultwarden
+- Flame
+- Plex
+- Plextraktsync
+- Firefly
+- MariaDB
+- Viseron
+- Dozzle
+## Lista de servicios en test (también conocidos como no publicados)
+- Nginx Proxy Manager
+- Astro-dashboard
+- Authelia
+- Bookstack
+- Diun
+- Flatnotes
+- Homepage
+- It-tools
+- Loki
+- Mealie
+- Grafana + prometheus + node_exporter
+- Overseerr
+- Pihole
+- Plex-playlist-sync
+- Syncthing
+- Traefik
+- Uptime-kuma
+- Varken
+- Watchtower
