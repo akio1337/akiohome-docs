@@ -11,7 +11,6 @@ theme:
     - content.tabs.link
     - content.code.annotation
     - content.code.copy
-  custom_dir: docs/_config/overrides
   language: es
   palette:
     - scheme: slate
