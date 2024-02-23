@@ -5,8 +5,6 @@ services:
     restart: unless-stopped
     volumes:
       - redisdata:/data
-    ports:
-      - "6379:6379"
   db:
     image: docker.io/library/postgres:15
     restart: unless-stopped
