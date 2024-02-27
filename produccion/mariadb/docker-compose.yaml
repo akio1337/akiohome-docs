@@ -8,6 +8,11 @@ services:
       - /home/akio1337/mariadb/config-db:/config
     networks:
       - db
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} #Generar password supersegura
+      - TZ=${TZ}
     restart: unless-stopped
 networks:
  db:
