@@ -16,7 +16,7 @@ services:
       - /tmp/plex/transcode:/transcode
       - plex-config:/config
       - /mnt/usb/mediausb:/media/usb/mediausb
-      - /mnt/hdd/backup/plex:/config/backup
+      - /mnt/syno/backup/plex:/config/backup
       - /mnt/syno/:/mnt/syno/
     labels:
       - flame.type=application

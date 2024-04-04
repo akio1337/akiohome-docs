@@ -10,7 +10,7 @@ services:
     volumes:
       - /home/akio1337/lidarr/config:/config
       - /mnt/usb/:/mnt/usb/
-      - /mnt/hdd/backup/lidarr:/config/backup
+      - /mnt/syno/backup/lidarr:/config/backup
     ports:
       - 8686:8686
     networks:

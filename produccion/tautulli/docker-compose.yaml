@@ -11,7 +11,7 @@ services:
     volumes:
       - /home/akio1337/tautulli/config:/config
       - plex-config:/plex-config
-      - /mnt/hdd/backup/tautulli:/config/backups ## La carpeta en el contenedor es backups ya que Tautulli no permite modificarlo
+      - /mnt/syno/backup/tautulli:/config/backups ## La carpeta en el contenedor es backups ya que Tautulli no permite modificarlo
     ports:
       - 8181:8181
     labels:
