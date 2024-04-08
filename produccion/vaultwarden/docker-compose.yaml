@@ -5,19 +5,8 @@ services:
     container_name: vaultwarden
     volumes:
       - vw-data:/data
-    restart: unless-stopped
-  caddy:
-    image: caddy:2
-    container_name: caddy
-    restart: always
     ports:
-      - 443:443
-    volumes:
-      - /home/akio1337/vaultwarden/Caddyfile:/etc/caddy/Caddyfile:ro
-      - /home/akio1337/vaultwarden/caddy-config:/config
-      - /home/akio1337/vaultwarden/certs:/certs
-      - /home/akio1337/vaultwarden/caddy-data:/data
-    environment:
-      - DOMAIN=https://akiohome.tail21cc7.ts.net
+      - 3012:3012
+    restart: unless-stopped
 volumes:
  vw-data:
