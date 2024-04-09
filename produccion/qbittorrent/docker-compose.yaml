@@ -13,6 +13,7 @@ services:
       - qbittorrent-data:/config
       - /mnt/usb/descargas:/mnt/usb/descargas
       - /mnt/syno/descargas:/mnt/syno/descargas
+      - /mnt/syno/mediasyno:/mnt/syno/mediasyno
       - /mnt/syno/Switch:/mnt/syno/Switch
     ports:
       - 6881:6881

@@ -10,6 +10,7 @@ services:
    volumes:
     - /home/akio1337/sonarr/config:/config
     - /mnt/usb/:/mnt/usb/
+    - /mnt/syno/mediasyno:/mnt/syno/mediasyno
     - /mnt/syno/backup/sonarr:/config/backup
    ports:
     - 8989:8989
