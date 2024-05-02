@@ -1,8 +1,6 @@
 entryPoints:
   websecure:
     address: :443
-  web:
-    address: :80
 api:
   insecure: true
 providers:
