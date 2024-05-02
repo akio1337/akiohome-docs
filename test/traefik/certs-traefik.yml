@@ -1,5 +1,0 @@
-
-tls:
-  certificates:
-    - certFile: /home/akio1337/traefik/certs/fullchain.pem
-      keyFile: /home/akio1337/traefik/certs/privkey.pem
