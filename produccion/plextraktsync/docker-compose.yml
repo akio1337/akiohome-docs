@@ -12,6 +12,7 @@ services:
     labels:
       ofelia.job-run.plextraktsync.schedule: "@every 6h"
       ofelia.job-run.plextraktsync.container: "plextraktsync"
+      traefik.enable: "false"
   plextraktsync:
     image: ghcr.io/taxel/plextraktsync:0.28.17
     container_name: plextraktsync
@@ -19,6 +20,8 @@ services:
     command: sync
     volumes:
       - ./config:/app/config
+    labels:
+      traefik.enable: "false"
   plextraktwatch:
     image: ghcr.io/taxel/plextraktsync:0.28.17
     container_name: plextraktwatch
@@ -26,4 +29,6 @@ services:
     command: watch
     volumes:
       - ./config:/app/config
+    labels:
+      traefik.enable: "false"
     restart: unless-stopped

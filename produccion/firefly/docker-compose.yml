@@ -17,6 +17,7 @@ services:
       - flame.name=Firefly
       - flame.url=http://akiohome:5050
       - flame.icon=piggy-bank
+      - traefik.enable=false
     env_file: 
      - .env
   cron:
