@@ -20,7 +20,7 @@ services:
       - /mnt/syno/:/mnt/syno/
     labels:
       - flame.type=application
-      - flame.name=Plex
+      - flame.name=plex2
       - flame.url=https://plex.tv
       - flame.icon=play-box
       - traefik.enable=false
