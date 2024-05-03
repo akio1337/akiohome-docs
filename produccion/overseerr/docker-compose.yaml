@@ -14,7 +14,7 @@ services:
     labels:
       - flame.type=application
       - flame.name=Overseerr
-      - flame.url=https://peticiones.akiohome.com
+      - flame.url=https://peticiones.akiolab.es
       - flame.icon=plus-box
       - "traefik.http.routers.overseerr.entrypoints=websecure"
       - "traefik.http.routers.overseerr.tls=true"
