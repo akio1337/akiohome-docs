@@ -11,6 +11,8 @@ services:
       - /home/akio1337/overseerr/config:/config
     networks:
       - home
+    ports:
+      - 5055:5055
     labels:
       - flame.type=application
       - flame.name=Overseerr
