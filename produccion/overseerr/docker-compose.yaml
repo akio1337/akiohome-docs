@@ -22,6 +22,7 @@ services:
       - "traefik.http.routers.overseerr.tls=true"
       - "traefik.http.routers.overseerr.rule=Host(`peticiones.akiolab.es`)"
       - "traefik.http.services.overseerr-service.loadbalancer.server.port=5055"
+      - "traefik.http.routers.overseerr.tls.certresolver=myresolver"
     restart: unless-stopped 
 networks:
   home:
