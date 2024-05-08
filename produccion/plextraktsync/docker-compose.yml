@@ -2,7 +2,6 @@ version: '2'
 services:
   scheduler:
     image: mcuadros/ofelia:latest
-    network_mode: host
     container_name: scheduler
     depends_on:
       - plextraktsync
@@ -12,23 +11,16 @@ services:
     labels:
       ofelia.job-run.plextraktsync.schedule: "@every 6h"
       ofelia.job-run.plextraktsync.container: "plextraktsync"
-      traefik.enable: "false"
   plextraktsync:
     image: ghcr.io/taxel/plextraktsync:0.28.17
     container_name: plextraktsync
-    network_mode: host
     command: sync
     volumes:
-      - ./config:/app/config
-    labels:
-      traefik.enable: "false"
+      - /home/akio1337/plextraktsync/config:/app/config
   plextraktwatch:
     image: ghcr.io/taxel/plextraktsync:0.28.17
     container_name: plextraktwatch
-    network_mode: host
     command: watch
     volumes:
-      - ./config:/app/config
-    labels:
-      traefik.enable: "false"
+      - /home/akio1337/plextraktsync/config:/app/config
     restart: unless-stopped
