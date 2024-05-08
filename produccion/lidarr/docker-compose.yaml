@@ -18,7 +18,7 @@ services:
     labels:
       - flame.type=application
       - flame.name=Lidarr
-      - flame.url=https://music.akiohome.com
+      - flame.url=http://akiohome:8686
       - flame.icon=music-box
     restart: unless-stopped
 networks:
