@@ -10,6 +10,7 @@ services:
     volumes:
       - /home/akio1337/radarr/config:/config
       - /mnt/usb/:/mnt/usb/
+      - /mnt/syno/mediasyno:/mnt/syno/mediasyno
       - /mnt/syno/backup/radarr:/config/backup
     ports:
       - 7878:7878
