@@ -14,15 +14,7 @@ services:
     environment:
       - PASSWORD_FILE=/home/akio1337/flame/app/data/secrets
     restart: unless-stopped
-    networks:
-      - arr
 # optional but required for Docker secrets (1)
 secrets:
   password:
     file: /home/akio1337/flame/app/data/secrets
-
-networks:
-  arr:
-    name: arr
-    external: true
-      
