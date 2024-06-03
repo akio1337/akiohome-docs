@@ -9,7 +9,7 @@ services:
       - PGID=100
       - TZ=Europe/Madrid
     volumes:
-      - /home/akio1337/tautulli/config:/config
+      - /opt/docker/tautulli/config:/config
       - plex-config:/plex-config
       - /mnt/syno/backup/tautulli:/config/backups ## La carpeta en el contenedor es backups ya que Tautulli no permite modificarlo
     ports:
