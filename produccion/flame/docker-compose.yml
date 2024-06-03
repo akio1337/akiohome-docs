@@ -5,7 +5,7 @@ services:
     image: pawelmalak/flame
     container_name: flame
     volumes:
-      - /home/akio1337/flame/app/data:/app/data
+      - /opt/docker/flame/app/data:/app/data
       - /var/run/docker.sock:/var/run/docker.sock # optional but required for Docker integration
     ports:
       - 5005:5005
