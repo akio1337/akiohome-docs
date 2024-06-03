@@ -19,9 +19,9 @@ services:
     ports:
       - "8300:8000"
     volumes:
-      - /home/akio1337/paperless/data:/usr/src/paperless/data
-      - /home/akio1337/paperless/media:/usr/src/paperless/media
-      - /home/akio1337/paperless/export:/usr/src/paperless/export
+      - /opt/docker/paperless/data:/usr/src/paperless/data
+      - /opt/docker/paperless/media:/usr/src/paperless/media
+      - /opt/docker/paperless/export:/usr/src/paperless/export
     labels:
       - flame.type=application
       - flame.name=Paperless
