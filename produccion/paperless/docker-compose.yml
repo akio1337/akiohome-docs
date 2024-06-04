@@ -21,7 +21,7 @@ services:
     volumes:
       - /opt/docker/paperless/data:/usr/src/paperless/data
       - /opt/docker/paperless/media:/usr/src/paperless/media
-      - /opt/docker/paperless/export:/usr/src/paperless/export
+      - /mnt/syno/backup/paperless:/usr/src/paperless/export
     labels:
       - flame.type=application
       - flame.name=Paperless
