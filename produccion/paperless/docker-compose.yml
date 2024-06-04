@@ -34,6 +34,7 @@ services:
       - USERMAP_UID=1026
       - USERMAP_GID=100
       - PAPERLESS_TIME_ZONE=Europe/Madrid
+      - PAPERLESS_FILENAME_FORMAT={document_type}/{created_year}/{title}
 volumes:
   data:
   pgdata:
