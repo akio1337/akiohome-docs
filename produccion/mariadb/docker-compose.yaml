@@ -5,7 +5,7 @@ services:
     hostname: mariadb
     container_name: mariadb
     volumes:
-      - /home/akio1337/mariadb/config-db:/config
+      - /opt/docker/mariadb/config-db:/config
     networks:
       - db
     environment:
