@@ -9,8 +9,7 @@ services:
       - TZ=Europe/Madrid
     volumes:
       - /opt/docker/radarr/config:/config
-      - /mnt/syno/descargas:/mnt/syno/descargas
-      - /mnt/syno/mediasyno:/mnt/syno/mediasyno
+      - /mnt/syno/:/mnt/syno/
       - /mnt/syno/backup/radarr:/config/backup
     ports:
       - 7878:7878
