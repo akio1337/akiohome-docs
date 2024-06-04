@@ -8,7 +8,7 @@ services:
       - PGID=100
       - TZ=Europe/Madrid
     volumes:
-      - /home/akio1337/prowlarr/config:/config
+      - /opt/docker/prowlarr/config:/config
       - /mnt/syno/backup/prowlarr:/config/backup
     ports:
       - 9696:9696

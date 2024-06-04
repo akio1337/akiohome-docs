@@ -8,7 +8,7 @@ services:
       - PGID=100
       - TZ=Europe/Madrid
     volumes:
-      - /home/akio1337/lidarr/config:/config
+      - /opt/docker/lidarr/config:/config
       - /mnt/usb/:/mnt/usb/
       - /mnt/syno/backup/lidarr:/config/backup
     ports:
