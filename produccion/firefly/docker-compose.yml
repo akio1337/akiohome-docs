@@ -19,7 +19,7 @@ services:
       - flame.icon=piggy-bank
       - traefik.enable=false
     env_file: 
-     - /opt/docker/firefly/.env
+     - .env
   cron:
     image: alpine
     restart: always
@@ -32,7 +32,7 @@ services:
     container_name: firefly_iii_importer
     restart: always
     env_file: 
-     - /opt/docker/firefly/.importer.env
+     - .importer.env
     depends_on:
       - app
     ports:
