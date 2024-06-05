@@ -35,6 +35,7 @@ services:
       - USERMAP_GID=100
       - PAPERLESS_TIME_ZONE=Europe/Madrid
       - PAPERLESS_FILENAME_FORMAT={document_type}/{created_year}/{title}
+      - PAPERLESS_OCR_USER_ARGS={"invalidate_digital_signatures":true}
 volumes:
   data:
   pgdata:
