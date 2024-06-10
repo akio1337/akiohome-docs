@@ -20,11 +20,6 @@ services:
       - 8080:8080
     networks:
       - arr
-    labels:
-      - flame.type=application
-      - flame.name=qBittorrent
-      - flame.url=http://akiohome:8080
-      - flame.icon=download-box
     restart: unless-stopped
 volumes:
  qbittorrent-data:

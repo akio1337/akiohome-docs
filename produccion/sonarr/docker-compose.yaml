@@ -16,11 +16,6 @@ services:
     - 8989:8989
    networks:
     - arr
-   labels:
-    - flame.type=application
-    - flame.name=Sonarr
-    - flame.url=http://akiohome:8989
-    - flame.icon=television-box
    restart: unless-stopped
 networks:
   arr:

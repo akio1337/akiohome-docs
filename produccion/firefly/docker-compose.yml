@@ -12,12 +12,6 @@ services:
       - db
     ports:
       - 5050:8080
-    labels:
-      - flame.type=application
-      - flame.name=Firefly
-      - flame.url=http://akiohome:5050
-      - flame.icon=piggy-bank
-      - traefik.enable=false
     env_file: 
      - .env
   cron:
@@ -39,11 +33,6 @@ services:
       - 5051:8080
     networks:
       - firefly_iii
-    labels:
-      - flame.type=application
-      - flame.name=Firefly-Importer
-      - flame.url=http://akiohome:5051
-      - flame.icon=database-import
 networks:
    db:
     name: db

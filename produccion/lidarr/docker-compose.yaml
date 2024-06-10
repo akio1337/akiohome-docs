@@ -15,11 +15,6 @@ services:
       - 8686:8686
     networks:
       - arr
-    labels:
-      - flame.type=application
-      - flame.name=Lidarr
-      - flame.url=http://akiohome:8686
-      - flame.icon=music-box
     restart: unless-stopped
 networks:
   arr:

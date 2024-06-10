@@ -15,11 +15,6 @@ services:
       - 7878:7878
     networks:
       - arr
-    labels:
-      - flame.type=application
-      - flame.name=Radarr
-      - flame.url=http://akiohome:7878
-      - flame.icon=filmstrip-box
     restart: unless-stopped
 networks:
   arr:

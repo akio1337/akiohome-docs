@@ -14,11 +14,6 @@ services:
       - 9696:9696
     networks:
       - arr
-    labels:
-      - flame.type=application
-      - flame.name=Prowlarr
-      - flame.url=http://akiohome:9696
-      - flame.icon=alpha-p-box
     restart: unless-stopped
 networks:
   arr:

@@ -18,12 +18,6 @@ services:
       - /mnt/usb/mediausb:/media/usb/mediausb
       - /mnt/syno/backup/plex:/config/backup
       - /mnt/syno/:/mnt/syno/
-    labels:
-      - flame.type=application
-      - flame.name=Plex
-      - flame.url=https://plex.tv
-      - flame.icon=play-box
-      - traefik.enable=false
     restart: unless-stopped
 volumes:
  plex-config:

@@ -22,11 +22,6 @@ services:
       - /opt/docker/paperless/data:/usr/src/paperless/data
       - /opt/docker/paperless/media:/usr/src/paperless/media
       - /mnt/syno/backup/paperless:/usr/src/paperless/export
-    labels:
-      - flame.type=application
-      - flame.name=Paperless
-      - flame.url=http://akiohome:8000
-      - flame.icon=printer-off
     environment:
       - COMPOSE_PROJECT_NAME=paperless
       - PAPERLESS_REDIS=redis://broker:6379

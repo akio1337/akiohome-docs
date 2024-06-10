@@ -14,11 +14,6 @@ services:
       - /mnt/syno/backup/tautulli:/config/backups ## La carpeta en el contenedor es backups ya que Tautulli no permite modificarlo
     ports:
       - 8181:8181
-    labels:
-      - flame.type=application
-      - flame.name=Tautulli
-      - flame.url=http://akiohome:8181
-      - flame.icon=chart-box
     restart: unless-stopped
 volumes:
   plex-config:
