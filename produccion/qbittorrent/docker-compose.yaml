@@ -18,7 +18,6 @@ services:
       - 6881:6881
       - 6881:6881/udp
     networks:
-      - arr
       - home
     labels: 
       - "traefik.http.routers.qbittorrent.entrypoints=https"
@@ -31,9 +30,6 @@ volumes:
  qbittorrent-data:
 
 networks:
-  arr:
-    external: true
-    name: arr
   home:
     name: home
     external: true
