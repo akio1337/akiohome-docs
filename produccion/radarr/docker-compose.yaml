@@ -16,6 +16,7 @@ services:
     ports: 
       - 7878:7878
     labels: 
+      - "traefik.enable=true"
       - "traefik.http.routers.radarr.entrypoints=https"
       - "traefik.http.routers.radarr.tls=true"
       - "traefik.http.routers.radarr.rule=Host(`pelis.akiolab.es`)"

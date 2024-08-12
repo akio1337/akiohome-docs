@@ -46,10 +46,11 @@ services:
       AUTHENTIK_POSTGRESQL__NAME: ${PG_DB:-authentik}
       AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
     labels:
-    - "traefik.http.routers.authentik.entrypoints=https"
-    - "traefik.http.routers.authentik.tls=true"
-    - "traefik.http.routers.authentik.rule=Host(`sso.akiolab.es`)"
-    - "traefik.http.services.authentik-service.loadbalancer.server.port=9000"    
+      - "traefik.enable=true"
+      - "traefik.http.routers.authentik.entrypoints=https"
+      - "traefik.http.routers.authentik.tls=true"
+      - "traefik.http.routers.authentik.rule=Host(`sso.akiolab.es`)"
+      - "traefik.http.services.authentik-service.loadbalancer.server.port=9000"    
     volumes:
       - /opt/docker/authentik/media:/media
       - /opt/docker/authentik/custom-templates:/templates

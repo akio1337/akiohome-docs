@@ -17,6 +17,7 @@ services:
    networks:
     - home
    labels:
+    - "traefik.enable=true"
     - "traefik.http.routers.sonarr.entrypoints=https"
     - "traefik.http.routers.sonarr.tls=true"
     - "traefik.http.routers.sonarr.rule=Host(`series.akiolab.es`)"

@@ -20,6 +20,7 @@ services:
     networks:
       - home
     labels: 
+      - "traefik.enable=true"
       - "traefik.http.routers.qbittorrent.entrypoints=https"
       - "traefik.http.routers.qbittorrent.tls=true"
       - "traefik.http.routers.qbittorrent.rule=Host(`torrent.akiolab.es`)"
