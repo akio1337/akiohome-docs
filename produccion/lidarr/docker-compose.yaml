@@ -12,7 +12,6 @@ services:
       - /mnt/usb/:/mnt/usb/
       - /mnt/syno/backup/lidarr:/config/backup
     networks:
-      - arr
       - home
     labels: 
       - "traefik.http.routers.lidarr.entrypoints=https"
@@ -22,9 +21,6 @@ services:
       - "traefik.http.services.lidarr-service.loadbalancer.server.port=8686"
     restart: unless-stopped
 networks:
-  arr:
-    name: arr
-    external: true 
   home:
     name: home
     external: true
