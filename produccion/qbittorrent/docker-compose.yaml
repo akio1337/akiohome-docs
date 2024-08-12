@@ -1,0 +1,39 @@
+version: "2.1"
+services:
+  qbittorrent:
+    image: linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1026
+      - PGID=100
+      - TZ=Europe/Madrid
+      - DOCKER_MODS=linuxserver/mods:universal-stdout-logs
+      - LOGS_TO_STDOUT=/config/qBittorrent/logs/qbittorrent.log
+    volumes:
+      - qbittorrent-data:/config
+      - /mnt/usb/descargas:/mnt/usb/descargas
+      - /mnt/syno/descargas:/mnt/syno/descargas
+      - /mnt/syno/Switch:/mnt/syno/Switch
+    ports:
+      - 6881:6881
+      - 6881:6881/udp
+    networks:
+      - arr
+      - home
+    labels: 
+      - "traefik.http.routers.qbittorrent.entrypoints=https"
+      - "traefik.http.routers.qbittorrent.tls=true"
+      - "traefik.http.routers.qbittorrent.rule=Host(`torrent.akiolab.es`)"
+      - "traefik.http.routers.qbittorrent.middlewares=authentik@file"
+      - "traefik.http.services.qbittorrent-service.loadbalancer.server.port=8080"
+    restart: unless-stopped
+volumes:
+ qbittorrent-data:
+
+networks:
+  arr:
+    external: true
+    name: arr
+  home:
+    name: home
+    external: true

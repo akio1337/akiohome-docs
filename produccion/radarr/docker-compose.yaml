@@ -1,0 +1,30 @@
+version: "2.1"
+services:
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1026
+      - PGID=100
+      - TZ=Europe/Madrid
+    volumes:
+      - /opt/docker/radarr/config:/config
+      - /mnt/syno/:/mnt/syno/
+      - /mnt/syno/backup/radarr:/config/backup
+    networks:
+      - arr
+      - home
+    labels: 
+      - "traefik.http.routers.radarr.entrypoints=https"
+      - "traefik.http.routers.radarr.tls=true"
+      - "traefik.http.routers.radarr.rule=Host(`pelis.akiolab.es`)"
+      - "traefik.http.routers.radarr.middlewares=authentik@file"
+      - "traefik.http.services.radarr-service.loadbalancer.server.port=7878"
+    restart: unless-stopped
+networks:
+  arr:
+    external: true
+    name: arr
+  home:
+    name: home
+    external: true

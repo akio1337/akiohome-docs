@@ -1,0 +1,14 @@
+version: '3'
+services:
+  astro-dashboard:
+    image: igorsheg/astro
+    container_name: astro-dashboard
+    volumes:
+      - ./config:/app/server/data
+    ports:
+      - 8088:8088
+    networks:
+      - home
+networks:
+  home: 
+    external: true 

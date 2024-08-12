@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  lidarr:
+    image: lscr.io/linuxserver/lidarr:latest
+    container_name: lidarr
+    environment:
+      - PUID=1026
+      - PGID=100
+      - TZ=Europe/Madrid
+    volumes:
+      - /opt/docker/lidarr/config:/config
+      - /mnt/usb/:/mnt/usb/
+      - /mnt/syno/backup/lidarr:/config/backup
+    networks:
+      - arr
+      - home
+    labels: 
+      - "traefik.http.routers.lidarr.entrypoints=https"
+      - "traefik.http.routers.lidarr.tls=true"
+      - "traefik.http.routers.lidarr.rule=Host(`musica.akiolab.es`)"
+      - "traefik.http.routers.lidarr.middlewares=authentik@file"
+      - "traefik.http.services.lidarr-service.loadbalancer.server.port=8686"
+    restart: unless-stopped
+networks:
+  arr:
+    name: arr
+    external: true 
+  home:
+    name: home
+    external: true

@@ -1,0 +1,17 @@
+version: "3"
+services:
+  dozzle:
+    container_name: dozzle
+    image: amir20/dozzle:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DOZZLE_ENABLE_ACTIONS=true
+    ports:
+      - 9999:8080
+    labels:
+      - flame.type=application
+      - flame.name=Dozzle
+      - flame.url=http://akiohome:9999
+      - flame.icon=poll
+    restart: unless-stopped

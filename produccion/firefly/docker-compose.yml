@@ -1,0 +1,40 @@
+version: '3.3'
+services:
+  app:
+    image: fireflyiii/core:latest
+    hostname: app
+    container_name: firefly_iii_core
+    restart: always
+    volumes:
+      - /opt/docker/firefly/upload:/var/www/html/storage/upload
+    networks:
+      - firefly_iii
+      - db
+    ports:
+      - 5050:8080
+    env_file: 
+     - .env
+  cron:
+    image: alpine
+    restart: always
+    container_name: firefly_iii_cron
+    command: sh -c "echo \"0 3 * * * wget -qO- http://192.168.0.24:5050/api/v1/cron/1d1b626358a6ff53e308010ce884e35c\" | crontab - && crond -f -L /dev/stdout"
+
+  importer:
+    image: fireflyiii/data-importer:latest
+    hostname: importer
+    container_name: firefly_iii_importer
+    restart: always
+    env_file: 
+     - .importer.env
+    depends_on:
+      - app
+    ports:
+      - 5051:8080
+    networks:
+      - firefly_iii
+networks:
+   db:
+    name: db
+    external: true
+   firefly_iii:

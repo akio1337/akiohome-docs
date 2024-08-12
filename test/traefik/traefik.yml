@@ -1,0 +1,10 @@
+entryPoints:
+  websecure:
+    address: :443
+api:
+  insecure: true
+providers:
+  docker:
+    endpoint: "unix://var/run/docker.sock"
+  file:
+    filename: /configuration/certs-traefik.yml

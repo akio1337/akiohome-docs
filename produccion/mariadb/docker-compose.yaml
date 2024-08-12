@@ -1,0 +1,21 @@
+version: '3'
+services:
+  mariadb:
+    image: lscr.io/linuxserver/mariadb
+    hostname: mariadb
+    container_name: mariadb
+    volumes:
+      - /opt/docker/mariadb/config-db:/config
+    networks:
+      - db
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} #Generar password supersegura
+      - TZ=${TZ}
+    restart: unless-stopped
+networks:
+ db:
+  name: db
+  external: true
+
