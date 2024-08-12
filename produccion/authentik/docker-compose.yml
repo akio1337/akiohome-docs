@@ -17,7 +17,7 @@ services:
       POSTGRES_USER: ${PG_USER:-authentik}
       POSTGRES_DB: ${PG_DB:-authentik}
     env_file:
-      - /opt/docker/authentik/.env
+      - /opt/docker/authentik/.db.env
     networks:
       - home
   redis:
@@ -80,7 +80,7 @@ services:
       - ./certs:/certs
       - ./custom-templates:/templates
     env_file:
-      - /opt/docker/authentik/.env
+      - /opt/docker/authentik/.worker.env
     depends_on:
       - postgresql
       - redis
