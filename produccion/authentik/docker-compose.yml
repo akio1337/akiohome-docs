@@ -17,7 +17,7 @@ services:
       POSTGRES_USER: ${PG_USER:-authentik}
       POSTGRES_DB: ${PG_DB:-authentik}
     env_file:
-      - /opt/docker/authentik/.db.env
+      - .env
     networks:
       - home
   redis:
@@ -54,7 +54,7 @@ services:
       - /opt/docker/authentik/media:/media
       - /opt/docker/authentik/custom-templates:/templates
     env_file:
-      - /opt/docker/authentik/.env
+      - .env
     ports:
       - "${COMPOSE_PORT_HTTP:-9000}:9000"
       - "${COMPOSE_PORT_HTTPS:-9443}:9443"
@@ -76,11 +76,10 @@ services:
     user: root
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./media:/media
-      - ./certs:/certs
-      - ./custom-templates:/templates
+      - /opt/docker/authentik/media:/media
+      - /opt/docker/authentik/custom-templates:/templates
     env_file:
-      - /opt/docker/authentik/.worker.env
+      - .env
     depends_on:
       - postgresql
       - redis
