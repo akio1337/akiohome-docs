@@ -13,6 +13,7 @@ services:
       - "/opt/docker/traefik/configuration/fileConfig.yml:/etc/traefik/fileConfig.yml"
     networks:
       - home
+    restart: always
 networks:
   home:
     external: true
