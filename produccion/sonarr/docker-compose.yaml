@@ -15,7 +15,6 @@ services:
    ports:
     - 8989:8989
    networks:
-    - arr
     - home
    labels:
     - "traefik.http.routers.sonarr.entrypoints=https"
@@ -25,9 +24,6 @@ services:
     - "traefik.http.routers.sonarr.middlewares=authentik@file"
    restart: unless-stopped
 networks:
-  arr:
-    external: true
-    name: arr
   home:
     name: home
     external: true
