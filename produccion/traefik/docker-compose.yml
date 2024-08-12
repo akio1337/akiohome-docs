@@ -4,11 +4,6 @@ services:
   traefik:
     image: traefik:v3.1
     container_name: traefik
-    command:
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.file.filename=/etc/traefik/fileConfig.yml"
-      - "--entrypoints.websecure.address=:443"
     ports:
       - "443:443"
       - "8081:8080"
