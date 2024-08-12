@@ -11,8 +11,9 @@ services:
       - /opt/docker/prowlarr/config:/config
       - /mnt/syno/backup/prowlarr:/config/backup
     networks:
-      - arr
       - home
+    ports:
+      - 9696:9696
     labels: 
       - "traefik.http.routers.prowlarr.entrypoints=https"
       - "traefik.http.routers.prowlarr.tls=true"
@@ -21,9 +22,6 @@ services:
       - "traefik.http.services.prowlarr-service.loadbalancer.server.port=9696"
     restart: unless-stopped
 networks:
-  arr:
-    name: arr
-    external: true
   home:
     name: home
     external: true
