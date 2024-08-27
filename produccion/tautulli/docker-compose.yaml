@@ -1,5 +1,4 @@
 ---
-version: "2.1"
 services:
   tautulli:
     image: lscr.io/linuxserver/tautulli:latest
@@ -10,12 +9,22 @@ services:
       - TZ=Europe/Madrid
     volumes:
       - /opt/docker/tautulli/config:/config
-      - plex-config:/plex-config
       - /mnt/syno/backup/tautulli:/config/backups ## La carpeta en el contenedor es backups ya que Tautulli no permite modificarlo
-    ports:
-      - 8181:8181
+      - plex_plex-config:/config/plex_logs
+    networks:
+      - home
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.tautulli.entrypoints=https"
+      - "traefik.http.routers.tautulli.tls=true"
+      - "traefik.http.routers.tautulli.rule=Host(`stats.akiolab.es`)"
+      - "traefik.http.services.tautulli-service.loadbalancer.server.port=8181"
     restart: unless-stopped
-volumes:
-  plex-config:
+volumes: 
+  plex_plex-config:
     name: plex_plex-config
+    external: true
+networks:
+  home:
+    name: home
     external: true
