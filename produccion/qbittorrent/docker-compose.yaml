@@ -15,6 +15,7 @@ services:
       - /mnt/syno/descargas:/mnt/syno/descargas
       - /mnt/syno/Switch:/mnt/syno/Switch
     ports:
+      - 8080:8080
       - 6881:6881
       - 6881:6881/udp
     networks:
