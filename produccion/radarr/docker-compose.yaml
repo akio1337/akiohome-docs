@@ -13,8 +13,6 @@ services:
       - /mnt/syno/backup/radarr:/config/backup
     networks:
       - home
-    ports: 
-      - 7878:7878
     labels: 
       - "traefik.enable=true"
       - "traefik.http.routers.radarr.entrypoints=https"

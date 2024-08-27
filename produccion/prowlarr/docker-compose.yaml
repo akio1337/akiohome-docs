@@ -12,8 +12,6 @@ services:
       - /mnt/syno/backup/prowlarr:/config/backup
     networks:
       - home
-    ports:
-      - 9696:9696
     labels: 
       - "traefik.enable=true"
       - "traefik.http.routers.prowlarr.entrypoints=https"

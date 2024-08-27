@@ -12,8 +12,6 @@ services:
     - /mnt/usb/:/mnt/usb/
     - /mnt/syno/mediasyno:/mnt/syno/mediasyno
     - /mnt/syno/backup/sonarr:/config/backup
-   ports:
-    - 8989:8989
    networks:
     - home
    labels:
