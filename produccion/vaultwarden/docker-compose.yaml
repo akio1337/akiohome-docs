@@ -8,7 +8,7 @@ services:
     networks:
       - home
     ports:
-      - 3012:3012
+      - 3012:80
     restart: unless-stopped
 volumes:
  vw-data:
