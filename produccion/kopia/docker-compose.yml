@@ -25,8 +25,8 @@ services:
             - /opt/docker/kopia/cache:/app/cache
             - /opt/docker/kopia/logs:/app/logs
             # Mount local folders to snapshot
-            - /home/akio1337/:/data:ro
+            - /mnt/syno/backup/:/synobackups:ro
             # Mount repository location
-            - /opt/docker/kopia/repository:/repository
+            - /mnt/hdd/backups/:/hddrepository
             # Mount path for browsing mounted snaphots
             - /tmp:/tmp:shared
