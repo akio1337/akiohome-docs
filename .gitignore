@@ -1,3 +1,4 @@
 *.env
 produccion/kopia/docker-compose.yml
 /home/akio1337/produccion/kopia/docker-compose.yml
+produccion/firefly/firefly-iii-backuper.sh
