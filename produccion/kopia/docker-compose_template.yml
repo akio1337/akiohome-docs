@@ -1,0 +1,32 @@
+services:
+    kopia:
+        image: kopia/kopia:latest
+        hostname: kopia
+        container_name: Kopia
+        restart: unless-stopped
+        ports:
+            - 51515:51515
+        # Setup the server that provides the web gui
+        command:
+            - server
+            - start
+            - --disable-csrf-token-checks
+            - --insecure
+            - --address=0.0.0.0:51515
+            - --server-username=my_user
+            - --server-password=my_password
+        environment:
+            # Set repository password
+            KOPIA_PASSWORD: "my_user"
+            USER: "my_password"
+        volumes:
+            # Mount local folders needed by kopia
+            - /opt/docker/kopia/config:/app/config
+            - /opt/docker/kopia/cache:/app/cache
+            - /opt/docker/kopia/logs:/app/logs
+            # Mount local folders to snapshot
+            - /mnt/syno/backup/:/synobackups:ro
+            # Mount repository location
+            - /mnt/hdd/backups/:/hddrepository
+            # Mount path for browsing mounted snaphots
+            - /tmp:/tmp:shared
