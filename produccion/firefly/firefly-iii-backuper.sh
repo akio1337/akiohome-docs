@@ -115,7 +115,7 @@ restore () {
     full_path=$(realpath $2)
     src_path="$(dirname $full_path)"
     backup_file="$(basename $full_path)"
-    upload_volume="$3"
+    upload_volume="/opt/docker/firefly/upload"
     no_files=$4
 
     if [ ! -f "$src_path/$backup_file" ]; then
@@ -162,7 +162,7 @@ restore () {
     docker run --rm -v "$upload_volume:/recover" -v "$src_path/tmp:/backup" alpine tar -xf /backup/firefly_upload.tar.gz -C /recover --strip 1
     restored+=(firefly_upload.tar.gz)
 
-    db_container=$(docker ps | grep -E 'firefly[-_](iii|)[_-]?db' | cut -d ' ' -f 1)
+    db_container=$(docker ps | grep -E 'mariadb' | cut -d ' ' -f 1)
 
     if [ -z $db_container ]; then
         warn "The db container is not running. Not restoring."
