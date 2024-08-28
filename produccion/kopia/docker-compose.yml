@@ -13,12 +13,12 @@ services:
             - --disable-csrf-token-checks
             - --insecure
             - --address=0.0.0.0:51515
-            - --server-username=akio1337
-            - --server-password=9Z4Yc12iJdcvo
+            - --server-username=my_username
+            - --server-password=my_password
         environment:
             # Set repository password
-            KOPIA_PASSWORD: "theoddpanda13"
-            USER: "akio1337"
+            KOPIA_PASSWORD: "my_password"
+            USER: "my_username"
         volumes:
             # Mount local folders needed by kopia
             - /opt/docker/kopia/config:/app/config
