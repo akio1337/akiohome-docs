@@ -13,20 +13,36 @@ services:
             - --disable-csrf-token-checks
             - --insecure
             - --address=0.0.0.0:51515
-            - --server-username=my_user
-            - --server-password=my_password
+            - --server-username=my_username # Cambiar usuario
+            - --server-password=my_password # Cambiar password
+            - --timezone=Europe/Madrid
         environment:
             # Set repository password
-            KOPIA_PASSWORD: "my_user"
-            USER: "my_password"
+            KOPIA_PASSWORD: "my_passowrd" # Cambiar password
+            USER: "my_user" # Cambiar usuario
         volumes:
-            # Mount local folders needed by kopia
+            # Script para parar y arrancar contenedores
+            - ./docker.sh:/docker.sh:ro
+
+            # Docker UNIX socket, para que el script pueda interactuar con Docker
+            - /var/run/docker.sock:/var/run/docker.sock:rw
+
+            # Directorios de la aplicación de Kopia
             - /opt/docker/kopia/config:/app/config
             - /opt/docker/kopia/cache:/app/cache
             - /opt/docker/kopia/logs:/app/logs
-            # Mount local folders to snapshot
-            - /mnt/syno/backup/:/synobackups:ro
-            # Mount repository location
-            - /mnt/hdd/backups/:/hddrepository
-            # Mount path for browsing mounted snaphots
+
+            # Directorio temporal de Kopia
             - /tmp:/tmp:shared
+
+            # Volumenes de ORIGEN de los que se harán backup
+            - /mnt/syno/backup/:/source/synobackups:ro
+            - vaultwarden_vw-data:/source/vaultwarden:ro
+            - /mnt/syno/mediasyno/FotosSyno:/source/fotossyno:ro
+
+            # Volumen de DESTINO del repositorio donde se guardarán los backup
+            - /mnt/hdd/backups/:/backups
+volumes:
+ vaultwarden_vw-data:
+    name: vaultwarden_vw-data
+    external: true
