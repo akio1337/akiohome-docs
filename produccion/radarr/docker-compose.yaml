@@ -9,7 +9,7 @@ services:
       - TZ=Europe/Madrid
     volumes:
       - /opt/docker/radarr/config:/config
-      - /mnt/syno/:/mnt/syno/
+      - /mnt/usb/:/mnt/usb/
       - /mnt/syno/backup/radarr:/config/backup
     networks:
       - home

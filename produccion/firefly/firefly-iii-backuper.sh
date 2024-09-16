@@ -87,7 +87,7 @@ backup () {
         warn "db container is not running. Not backing up."
     else
         info 'Backing up database'
-        docker exec $db_container bash -c '/usr/bin/mariadb-dump -u root --password="my_password" firefly ' > "$dest_path/tmp/firefly_db.sql"
+        docker exec $db_container bash -c '/usr/bin/mariadb-dump -u root --password="Cfa0105." firefly ' > "$dest_path/tmp/firefly_db.sql"
         to_backup+=("firefly_db.sql")
     fi
 
@@ -168,7 +168,7 @@ restore () {
         warn "The db container is not running. Not restoring."
     else
         info 'Restoring database'
-        cat "$src_path/tmp/firefly_db.sql" | docker exec -i $db_container bash -c '/usr/bin/mariadb -u root --password="my_password" "firefly"'
+        cat "$src_path/tmp/firefly_db.sql" | docker exec -i $db_container bash -c '/usr/bin/mariadb -u root --password="Cfa0105." "firefly"'
         restored+=(firefly_db.sql)
     fi
 
