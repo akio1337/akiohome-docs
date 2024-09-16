@@ -2,3 +2,5 @@
 produccion/kopia/docker-compose.yml
 /home/akio1337/produccion/kopia/docker-compose.yml
 produccion/firefly/firefly-iii-backuper.sh
+produccion/viseron/config/*
+produccion/viseron/config/.viseron/webserver
