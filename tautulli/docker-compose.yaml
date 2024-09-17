@@ -10,7 +10,7 @@ services:
     volumes:
       - /opt/docker/tautulli/config:/config
       - /mnt/syno/backup/tautulli:/config/backups ## La carpeta en el contenedor es backups ya que Tautulli no permite modificarlo
-      - plex_plex-config:/config/plex_logs
+      - plex_plex-config:/config/plex_logs # Mapeamos el volumen de Plex para que Tautulli leer los logs desde la web
     networks:
       - home
     labels:
