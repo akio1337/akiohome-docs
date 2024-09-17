@@ -1,6 +1,0 @@
-version: "2.1"
-services:
-  playlistSync:
-    image: rnagabhyrava/plexplaylistsync:latest
-    container_name: playlistSync
-    restart: unless-stopped
