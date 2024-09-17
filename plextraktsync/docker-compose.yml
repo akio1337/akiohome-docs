@@ -1,4 +1,3 @@
-version: '2'
 services:
   scheduler:
     image: mcuadros/ofelia:latest
