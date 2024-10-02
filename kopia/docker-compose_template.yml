@@ -18,8 +18,10 @@ services:
             - --timezone=Europe/Madrid
         environment:
             # Set repository password
-            KOPIA_PASSWORD: "my_passowrd" # Cambiar password
-            USER: "my_user" # Cambiar usuario
+            KOPIA_PASSWORD: ${KOPIA_PASSWORD:-kopia}
+            USER: ${KOPIA_USER:-kopia}
+        env_file:
+            - .env
         volumes:
             # Script para parar y arrancar contenedores
             - ./docker.sh:/docker.sh:ro
