@@ -10,8 +10,8 @@ nav:
       - Contenedores: docker/contenedores.md
       - Redes y Volúmenes: docker/redes_volumenes.md
   - Aplicaciones:
-      - Plex: aplicaciones/index.md
-      - Grafana: aplicaciones/grafana.md
+      - Plex: aplicaciones/plex/index.md
+      - Grafana: aplicaciones/grafana/grafana.md
 site_name: Documentación de AkioHome
 site_url: https://akio1337.github.io/akiohome-docs/
 use_directory_urls: false
