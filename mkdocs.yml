@@ -1,0 +1,17 @@
+site_name: Documentación del Servidor
+nav:
+  - Inicio: index.md
+  - Introducción: introduccion.md
+  - Infraestructura:
+      - Hardware: infraestructura/hardware.md
+      - Red: infraestructura/red.md
+  - Docker:
+      - Instalación: docker/instalacion.md
+      - Contenedores: docker/contenedores.md
+      - Redes y Volúmenes: docker/redes_volumenes.md
+  - Aplicaciones:
+      - Plex: aplicaciones/plex.md
+      - Grafana: aplicaciones/grafana.md
+theme:
+  name: material
+  language: es
