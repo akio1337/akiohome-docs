@@ -142,7 +142,8 @@ docker compose up -d
   ```
 
 ---
-
-## Recursos Externos
+## Documentación oficial
 - [Documentación Oficial de Plex Docker](https://hub.docker.com/r/plexinc/pms-docker)
 - [Soporte de Plex](https://support.plex.tv/)
+- [Github de Plextraktsync](https://github.com/Taxel/PlexTraktSync)
+- [Github de Ofelia](https://github.com/mcuadros/ofelia/)
