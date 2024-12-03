@@ -1,0 +1,25 @@
+services:
+  scheduler:
+    image: mcuadros/ofelia:latest
+    container_name: scheduler
+    depends_on:
+      - plextraktsync
+    command: daemon --docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      ofelia.job-run.plextraktsync.schedule: "@every 6h"
+      ofelia.job-run.plextraktsync.container: "plextraktsync"
+  plextraktsync:
+    image: ghcr.io/taxel/plextraktsync:0.28.17
+    container_name: plextraktsync
+    command: sync
+    volumes:
+      - /opt/docker/plextraktsync/config:/app/config
+  plextraktwatch:
+    image: ghcr.io/taxel/plextraktsync:0.28.17
+    container_name: plextraktwatch
+    command: watch
+    volumes:
+      - /opt/docker/plextraktsync/config:/app/config
+    restart: unless-stopped
