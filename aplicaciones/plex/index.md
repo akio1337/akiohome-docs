@@ -82,6 +82,9 @@ docker run <parámetros_iniciales>
 ---
 
 ## Copias de Seguridad
+
+>[!warning] No se hacen copias de seguridad de Plex, son sólo metadatos y ocupa demasiado 
+
 - **Ruta de Configuración:** Respaldar el contenido de `/config`.
 - **Comando para respaldar:**
   ```bash
