@@ -4,7 +4,6 @@
 ## Introducción
 Plex es una plataforma de servidor multimedia que permite organizar, transmitir y compartir contenido multimedia como películas, series y música. Además, incluye un _scrobbler_ para [Trakt](https://trakt.tv) a través de Plextraktsync
 
-
 ---
 
 ## Configuración del Contenedor
