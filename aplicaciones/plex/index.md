@@ -2,41 +2,92 @@
 # Documentación de Plex
 
 ## Introducción
-Plex es una plataforma de servidor multimedia que permite organizar, transmitir y compartir contenido multimedia como películas, series y música. En este sistema, Plex está desplegado como un contenedor Docker.
+Plex es una plataforma de servidor multimedia que permite organizar, transmitir y compartir contenido multimedia como películas, series y música. Además, incluye un _scrobbler_ para [Trakt](https://trakt.tv) a través de Plextraktsync
 
 ---
 
 ## Configuración del Contenedor
 
+### Aplicaciones
+El servicio de Plex se compone de varias aplicaciones:
+- Plex
+  - Contenedor principal para mostrar el contenido
+- Ofelia
+  - Actúa como programador para hacer la sincro hacia Trakt
+- Plextraktsync
+  - Tiene dos modos:
+    - Sync: Sincroniza Trakt y Plex de manera periódica
+    - Watch: Se encarga de marcar en Trakt todo lo que se ve en tiempo real
 ### Imagen de Docker
-Se utiliza la imagen oficial de Plex disponible en Docker Hub: `plexinc/pms-docker`.
+Las imágenes usadas son:
+- Plex: `linuxserver/plex`
+- Ofelia: `mcuadros/ofelia`
+- Plextraktsync: `ghcr.io/taxel/plextraktsync:0.28.17`
 
-### Comando para Crear el Contenedor
-```bash
-docker run -d \
-  --name plex \
-  --network=host \
-  -e TZ="Europe/Madrid" \
-  -e PLEX_CLAIM="<token_de_reclamación>" \
-  -v /ruta/a/config:/config \
-  -v /ruta/a/medios:/data \
-  plexinc/pms-docker
+### Docker-compose para Crear el Contenedor
+```yaml
+services:
+  plex:
+    image: linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    devices:
+     - /dev/dri/:/dev/dri/
+    environment:
+      - PUID=1000
+      - PGID=100
+      - VERSION=docker
+      - TZ=Europe/Madrid
+    volumes:
+      - /tmp/plex/transcode:/transcode
+      - /opt/docker/plex/config:/config
+      - /mnt/usb/mediausb:/media/usb/mediausb
+    restart: unless-stopped
+  scheduler:
+    image: mcuadros/ofelia:latest
+    container_name: scheduler
+    depends_on:
+      - plextraktsync
+    command: daemon --docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      ofelia.job-run.plextraktsync.schedule: "@every 6h"
+      ofelia.job-run.plextraktsync.container: "plextraktsync"
+  plextraktsync:
+    image: ghcr.io/taxel/plextraktsync:0.28.17
+    container_name: plextraktsync
+    command: sync
+    volumes:
+      - /opt/docker/plextraktsync/config:/app/config
+  plextraktwatch:
+    image: ghcr.io/taxel/plextraktsync:0.28.17
+    container_name: plextraktwatch
+    command: watch
+    volumes:
+      - /opt/docker/plextraktsync/config:/app/config
+    restart: unless-stopped
+volumes:
+ plex-config:
 ```
 
-#### Descripción de Parámetros:
-- `--network=host`: Permite a Plex comunicarse directamente con la red del host.
-- `-e TZ`: Establece la zona horaria.
-- `-e PLEX_CLAIM`: Token para vincular el servidor Plex a tu cuenta.
-- `-v /config`: Directorio para los archivos de configuración de Plex.
-- `-v /data`: Carpeta donde están almacenados tus archivos multimedia.
+#### Descripción de Claves:
+- `devices`: Permite a Plex utilizar la GPU del procesador para la transcodificación por hardware
+- `PUID / PGID`: Fuerza a ejecutar el contenedor con el usuario indicado. Ayuda a reducir los problemas con los permisos de los archivos
 
----
 
 ## Volúmenes y Rutas
-| Volumen          | Ruta en el Servidor         | Propósito                       |
-|-------------------|-----------------------------|----------------------------------|
-| `/config`         | `/home/usuario/docker/plex/config` | Archivos de configuración de Plex. |
-| `/data`           | `/mnt/medios`              | Almacén principal de medios.    |
+### Plex
+| Volumen          | Ruta en el Servidor         | Propósito     |
+|-------------------|-----------------------------|--------------|
+| `/config`         | `/opt/docker/plex/config` | Archivos de configuración de Plex. |
+| `/mnt/usb/mediausb`           | `/media/usb/mediausb`              | Almacén principal de medios.    |
+| `/transcode`|  `/tmp/transcode` | Archivos de transcodificación temporales | 
+
+### Plextraktwatch / Plextraktsync
+| Volumen | Ruta en el servidor | Propósito |
+|--------------|-------------------|------------------|
+|`/app/config` | `/opt/docker/plextraktsync/config` | Archivos de configuración | 
 
 ---
 
@@ -46,20 +97,19 @@ docker run -d \
    http://<ip-del-servidor>:32400/web
    ```
 2. Inicia sesión con tu cuenta de Plex.
-3. Configura las bibliotecas multimedia seleccionando las carpetas dentro de `/data`.
+3. Configura las bibliotecas multimedia seleccionando las carpetas dentro de `/mnt/usb/mediausb`.
 
 ---
 
 ## Actualización del Contenedor
 Para actualizar Plex a la última versión:
 ```bash
-docker pull plexinc/pms-docker
-docker stop plex
-docker rm plex
-docker run <parámetros_iniciales>
+cd /home/akio1337/akiohome/plex
+docker compose pull
+docker compose up -d
 ```
 
-> **Nota:** Asegúrate de que los volúmenes de datos persistan para conservar tus configuraciones.
+> [!info]Podemos actualizar sólo uno de los servicios mediante `docker compose pull <nombre_servicio>`
 
 ---
 
