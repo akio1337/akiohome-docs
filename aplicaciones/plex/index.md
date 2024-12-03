@@ -73,19 +73,15 @@ volumes:
 
 #### Descripción de Claves:
 - `devices`: Permite a Plex utilizar la GPU del procesador para la transcodificación por hardware
-- `-e TZ`: Establece la zona horaria.
-- `-e PLEX_CLAIM`: Token para vincular el servidor Plex a tu cuenta.
-- `-v /config`: Directorio para los archivos de configuración de Plex.
-- `-v /data`: Carpeta donde están almacenados tus archivos multimedia.
+- `PUID / PGID`: Fuerza a ejecutar el contenedor con el usuario indicado. Ayuda a reducir los problemas con los permisos de los archivos
 
----
 
 ## Volúmenes y Rutas
 | Volumen          | Ruta en el Servidor         | Propósito                       |
 |-------------------|-----------------------------|----------------------------------|
 | `/config`         | `/home/usuario/docker/plex/config` | Archivos de configuración de Plex. |
 | `/data`           | `/mnt/medios`              | Almacén principal de medios.    |
-
+| `/tmp/transcode`|  `/transcode` | Archivos de transcodificación temporales
 ---
 
 ## Configuración Inicial
