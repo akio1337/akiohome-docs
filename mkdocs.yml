@@ -10,7 +10,7 @@ nav:
       - Contenedores: docker/contenedores.md
       - Redes y Volúmenes: docker/redes_volumenes.md
   - Aplicaciones:
-      - Plex: aplicaciones/plex.md
+      - Plex: aplicaciones/index.md
       - Grafana: aplicaciones/grafana.md
 theme:
   name: material
