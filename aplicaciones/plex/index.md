@@ -77,11 +77,18 @@ volumes:
 
 
 ## Volúmenes y Rutas
-| Volumen          | Ruta en el Servidor         | Propósito                       |
-|-------------------|-----------------------------|----------------------------------|
-| `/config`         | `/home/usuario/docker/plex/config` | Archivos de configuración de Plex. |
-| `/data`           | `/mnt/medios`              | Almacén principal de medios.    |
-| `/tmp/transcode`|  `/transcode` | Archivos de transcodificación temporales
+### Plex
+| Volumen          | Ruta en el Servidor         | Propósito     |
+|-------------------|-----------------------------|--------------|
+| `/config`         | `/opt/docker/plex/config` | Archivos de configuración de Plex. |
+| `/mnt/usb/mediausb`           | `/media/usb/mediausb`              | Almacén principal de medios.    |
+| `/transcode`|  `/tmp/transcode` | Archivos de transcodificación temporales | 
+
+### Plextraktwatch / Plextraktsync
+| Volumen | Ruta en el servidor | Propósito |
+|--------------|-------------------|------------------|
+|`/app/config` | `/opt/docker/plextraktsync/config` | Archivos de configuración | 
+
 ---
 
 ## Configuración Inicial
@@ -90,20 +97,19 @@ volumes:
    http://<ip-del-servidor>:32400/web
    ```
 2. Inicia sesión con tu cuenta de Plex.
-3. Configura las bibliotecas multimedia seleccionando las carpetas dentro de `/data`.
+3. Configura las bibliotecas multimedia seleccionando las carpetas dentro de `/mnt/usb/mediausb`.
 
 ---
 
 ## Actualización del Contenedor
 Para actualizar Plex a la última versión:
 ```bash
-docker pull plexinc/pms-docker
-docker stop plex
-docker rm plex
-docker run <parámetros_iniciales>
+cd /home/akio1337/akiohome/plex
+docker compose pull
+docker compose up -d
 ```
 
-> **Nota:** Asegúrate de que los volúmenes de datos persistan para conservar tus configuraciones.
+> [!info]Podemos actualizar sólo uno de los servicios mediante `docker compose pull <nombre_servicio>`
 
 ---
 
