@@ -10,6 +10,7 @@ Plex es una plataforma de servidor multimedia que permite organizar, transmitir 
 
 ### Aplicaciones
 El servicio de Plex se compone de varias aplicaciones:
+
   - Plex
     - Contenedor principal para mostrar el contenido
   - Ofelia
@@ -18,6 +19,7 @@ El servicio de Plex se compone de varias aplicaciones:
     - Tiene dos modos:
       - Sync: Sincroniza Trakt y Plex de manera periódica
       - Watch: Se encarga de marcar en Trakt todo lo que se ve en tiempo real
+      
 ### Imagen de Docker
 Las imágenes usadas son:
   - Plex: `linuxserver/plex`
@@ -109,8 +111,7 @@ docker compose pull
 docker compose up -d
 ```
 
-> [!TIP] 
-> Podemos actualizar sólo uno de los servicios mediante `docker compose pull <nombre_servicio>`
+!!! info "Podemos actualizar sólo uno de los servicios mediante `docker compose pull <nombre_servicio>`"
 
 ---
 
