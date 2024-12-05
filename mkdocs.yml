@@ -17,7 +17,8 @@ markdown_extensions:
 plugins:
  - search
 
-use_directory_urls: false
+use_directory_urls: true
+
 theme:
   name: material
   features:
@@ -30,14 +31,14 @@ theme:
     - media: "(prefers-color-scheme: dark)"
       primary: blue grey
       accent: deep orange
-      scheme: slate
+      scheme: default
       toggle:
         icon: material/brightness-7
         name: Switch to light mode
     - media: "(prefers-color-scheme: light)"
       primary: blue grey
       accent: blue
-      scheme: default
+      scheme: slate
       toggle:
         icon: material/brightness-4
         name: Switch to dark mode
