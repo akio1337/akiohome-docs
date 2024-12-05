@@ -10,19 +10,19 @@ Plex es una plataforma de servidor multimedia que permite organizar, transmitir 
 
 ### Aplicaciones
 El servicio de Plex se compone de varias aplicaciones:
-- Plex
-  - Contenedor principal para mostrar el contenido
-- Ofelia
-  - Actúa como programador para hacer la sincro hacia Trakt
-- Plextraktsync
-  - Tiene dos modos:
-    - Sync: Sincroniza Trakt y Plex de manera periódica
-    - Watch: Se encarga de marcar en Trakt todo lo que se ve en tiempo real
+  - Plex
+    - Contenedor principal para mostrar el contenido
+  - Ofelia
+    - Actúa como programador para hacer la sincro hacia Trakt
+  - Plextraktsync
+    - Tiene dos modos:
+      - Sync: Sincroniza Trakt y Plex de manera periódica
+      - Watch: Se encarga de marcar en Trakt todo lo que se ve en tiempo real
 ### Imagen de Docker
 Las imágenes usadas son:
-- Plex: `linuxserver/plex`
-- Ofelia: `mcuadros/ofelia`
-- Plextraktsync: `ghcr.io/taxel/plextraktsync:0.28.17`
+  - Plex: `linuxserver/plex`
+  - Ofelia: `mcuadros/ofelia`
+  - Plextraktsync: `ghcr.io/taxel/plextraktsync:0.28.17`
 
 ### Docker-compose para Crear el Contenedor
 ```yaml
@@ -72,8 +72,8 @@ volumes:
 ```
 
 #### Descripción de Claves:
-- `devices`: Permite a Plex utilizar la GPU del procesador para la transcodificación por hardware
-- `PUID / PGID`: Fuerza a ejecutar el contenedor con el usuario indicado. Ayuda a reducir los problemas con los permisos de los archivos
+  - `devices`: Permite a Plex utilizar la GPU del procesador para la transcodificación por hardware
+  - `PUID / PGID`: Fuerza a ejecutar el contenedor con el usuario indicado. Ayuda a reducir los problemas con los permisos de los archivos
 
 
 ## Volúmenes y Rutas
@@ -109,7 +109,7 @@ docker compose pull
 docker compose up -d
 ```
 
-> [!info]Podemos actualizar sólo uno de los servicios mediante `docker compose pull <nombre_servicio>`
+> [!TIP] Podemos actualizar sólo uno de los servicios mediante `docker compose pull <nombre_servicio>`
 
 ---
 
