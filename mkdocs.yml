@@ -1,20 +1,43 @@
-site_name: Documentación del Servidor
-nav:
-  - Inicio: index.md
-  - Introducción: introduccion.md
-  - Infraestructura:
-      - Hardware: infraestructura/hardware.md
-      - Red: infraestructura/red.md
-  - Docker:
-      - Instalación: docker/instalacion.md
-      - Contenedores: docker/contenedores.md
-      - Redes y Volúmenes: docker/redes_volumenes.md
-  - Aplicaciones:
-      - Plex: aplicaciones/plex/index.md
-      - Grafana: aplicaciones/grafana/grafana.md
-site_name: Documentación de AkioHome
+site_name: Akiolab Docs
 site_url: https://akio1337.github.io/akiohome-docs/
+copyright: Copyright &copy; 2024 Akiolab
+repo_url: https://github.com/akio1337/akiolab-docs
+repo_name: Akiolab-Docs
+
+extra:
+ social:
+  - icon: fontawesome/brands/square-github
+    link: https://github.com/akio1337/akiolab-docs
+
+markdown_extensions:
+  - abbr
+  - attr_list
+  - md_in_html
+  - admonition
+plugins:
+ - search
+
 use_directory_urls: false
 theme:
   name: material
+  features:
+    - content.code.copy
+    - content.action.edit
+    - content.action.view
+    - content.tooltips
   language: es
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      primary: blue grey
+      accent: deep orange
+      scheme: slate
+      toggle:
+        icon: material/brightness-7
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      primary: blue grey
+      accent: blue
+      scheme: default
+      toggle:
+        icon: material/brightness-4
+        name: Switch to dark mode
