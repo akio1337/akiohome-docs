@@ -109,7 +109,8 @@ docker compose pull
 docker compose up -d
 ```
 
-> [!TIP] Podemos actualizar sólo uno de los servicios mediante `docker compose pull <nombre_servicio>`
+> [!TIP] 
+> Podemos actualizar sólo uno de los servicios mediante `docker compose pull <nombre_servicio>`
 
 ---
 
